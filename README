@@ -1,0 +1,90 @@
+NAME
+    MooseX::AutoDestruct - Clear your attributes after a certain time
+
+SYNOPSIS
+        package Foo;
+        use Moose;
+        use namespace::autoclean;
+        use MooseX::AutoDestruct;
+
+        has destructable => (
+            traits => ['AutoDestruct'],
+            is => 'ro', isa => 'Str', required => 1,
+            ttl => 600, # time, in seconds
+        );
+
+DESCRIPTION
+    MooseX::AutoDestruct
+
+TRAITS APPLIED
+IMPLICATIONS FOR ROLES
+    As far as I know, there are none. Things should Just Work.
+
+CAVEATS
+    The attribute value is only auto-destructed on an access past the
+    destruct time; e.g. when an accessor, reader, or predicate accessor is
+    called. If you're doing something funky behind the scenes (e.g. directly
+    accessing the attribute in the hashref) things aren't going to work as
+    you expect.
+
+    Using get/set_value() on the attribute directly should work, though
+    we're not testing it yet.
+
+SEE ALSO
+    Class::MOP, Moose.
+
+AUTHOR
+    Chris Weyl, "<cweyl at alumni.drew.edu>"
+
+BUGS
+    Please report any bugs or feature requests to "bug-moosex-autodestruct
+    at rt.cpan.org", or through the web interface at
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MooseX-AutoDestruct>.
+
+TODO
+    Additional testing is required!
+
+SUPPORT
+    You can find documentation for this module with the perldoc command.
+
+        perldoc MooseX::AutoDestruct
+
+    You can also look for information at:
+
+    *   RT: CPAN's request tracker
+
+        <http://rt.cpan.org/NoAuth/Bugs.html?Dist=MooseX-AutoDestruct>
+
+    *   AnnoCPAN: Annotated CPAN documentation
+
+        <http://annocpan.org/dist/MooseX-AutoDestruct>
+
+    *   CPAN Ratings
+
+        <http://cpanratings.perl.org/d/MooseX-AutoDestruct>
+
+    *   Search CPAN
+
+        <http://search.cpan.org/dist/MooseX-AutoDestruct/>
+
+COPYRIGHT & LICENSE
+    Copyright (c) 2010, Chris Weyl "<cweyl@alumni.drew.edu>".
+
+    This library is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation; either version 2.1 of the License, or (at
+    your option) any later version.
+
+    This library is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS OR A PARTICULAR PURPOSE.
+
+    See the GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library; if not, write to the
+
+        Free Software Foundation, Inc.,
+        59 Temple Place, Suite 330,
+        Boston, MA  02111-1307 USA
+
