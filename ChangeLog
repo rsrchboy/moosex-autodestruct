@@ -1,5 +1,5 @@
 Changes for MooseX::AutoDestruct
 
-0.001 - Not yet released
-	* Initial release
+0.001_01 - Sun Jul  4 2010
+	* Initial release -- marked as developer, as we need more tests!
 
