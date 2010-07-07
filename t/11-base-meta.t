@@ -5,6 +5,9 @@
 This test exercises some basic attribute functionality, to make sure things
 are working "as advertized" with the AutoDestruct trait.
 
+Note that we're directly accessing the attribute values here via the
+metaclass, bypassing any installed accessors.
+
 =cut
 
 use strict;
@@ -22,9 +25,9 @@ use Test::Moose;
 
     has two => (
         traits => ['AutoDestruct'],
-        #is => 'rw', lazy_build => 1, ttl => 10,
         is => 'rw', predicate => 'has_two', ttl => 5,
     );
+
 }
 
 my $tc = TestClass->new;
@@ -35,14 +38,23 @@ meta_ok $tc;
 has_attribute_ok $tc, 'one';
 has_attribute_ok $tc, 'two';
 
-# basic autodestruct checking
-ok !$tc->has_two, 'no value for two yet';
-$tc->two('w00t');
-ok $tc->has_two, 'two has value';
-is $tc->two, 'w00t', 'two value set correctly';
+my $two = $tc->meta->get_attribute('two');
+
+diag '$two isa ' . ref $two;
+isa_ok $two => 'Moose::Meta::Attribute', 'two isan attribute metaclass';
+
+# some basic attribute tests
+has_attribute_ok $two, 'ttl';
+ok $two->has_ttl, 'two has a ttl';
+is $two->ttl => 5, 'ttl value is correct';
+
+# check with our instance
+ok !$two->has_value($tc), 'two has no value yet';
+$two->set_value($tc => 'w00t');
+is $two->get_value($tc), 'w00t', 'two set correctly';
 diag 'sleeping';
 sleep 8;
-ok !$tc->has_two, 'no value for two (autodestruct)';
+ok !$two->has_value($tc), 'no value for two (autodestruct)';
 diag $tc->two;
 
 
