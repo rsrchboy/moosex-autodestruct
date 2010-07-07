@@ -8,7 +8,7 @@ use namespace::autoclean;
 # debugging
 #use Smart::Comments '###', '####';
 
-our $VERSION = '0.001_01';
+our $VERSION = '0.001_02';
 
 =head1 NAME
 
@@ -59,7 +59,7 @@ testing it yet.
     use common::sense;
     use namespace::autoclean;
 
-    our $VERSION = '0.001_01';
+    our $VERSION = '0.001_02';
 
     has ttl => (is => 'ro', isa => 'Int', required => 1, predicate => 'has_ttl');
 
@@ -187,7 +187,7 @@ testing it yet.
     use Moose::Role;
     use namespace::autoclean;
 
-    our $VERSION = '0.001_01';
+    our $VERSION = '0.001_02';
 
     # debug!
     #before _eval_closure => sub { print "$_[2]\n" };
