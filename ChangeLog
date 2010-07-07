@@ -1,5 +1,10 @@
 Changes for MooseX::AutoDestruct
 
+0.001_02 - Tue Jul  6 2010
+	* Additional tests exercising the attribute from the meta side of things
+	* Correct how enforce_doomsday() was calling doomsday() (namely, now it
+	  passes the instance to doomsday() like it should
+
 0.001_01 - Sun Jul  4 2010
 	* Initial release -- marked as developer, as we need more tests!
 
