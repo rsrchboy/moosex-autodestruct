@@ -5,19 +5,14 @@ use strict;
 
 use namespace::autoclean;
 
-use Moose ();
-use Moose::Util::MetaRole;
-
 # debugging
-use Smart::Comments '###', '####';
+#use Smart::Comments '###', '####';
+
+our $VERSION = '0.001_01';
 
 =head1 NAME
 
 MooseX::AutoDestruct - Clear your attributes after a certain time
-
-=cut
-
-our $VERSION = '0.001_01';
 
 =head1 SYNOPSIS
 
@@ -64,10 +59,11 @@ testing it yet.
     use common::sense;
     use namespace::autoclean;
 
-    has ttl => (is => 'ro', isa => 'Int', required => 1);
+    our $VERSION = '0.001_01';
+
+    has ttl => (is => 'ro', isa => 'Int', required => 1, predicate => 'has_ttl');
 
     # generate / store our metaclass
-
     has _accessor_metaclass => (is => 'rw', isa => 'Str', predicate => '_has_accessor_metaclass');
 
     around accessor_metaclass => sub {
@@ -112,6 +108,9 @@ testing it yet.
 
         # set our destruct_at slot
         my $doomsday = $self->ttl + time;
+
+        ### doomsday set to: $doomsday
+        ### time() is: time()
         $self
             ->associated_class
             ->get_meta_instance
@@ -140,7 +139,9 @@ testing it yet.
             ->get_meta_instance
             ->get_slot_value($instance, $self->destruct_at_slot)
             ;
+        $doomsday ||= 0;
 
+        ### $doomsday
         ### time > $doomsday: time > $doomsday
         return time > $doomsday;
     }
@@ -148,6 +149,7 @@ testing it yet.
     sub avert_doomsday {
         my ($self, $instance) = @_;
 
+        ### in avert_doomsday()...
         $self
             ->associated_class
             ->get_meta_instance
@@ -168,10 +170,11 @@ testing it yet.
         my ($self, $instance, $for_trigger) = @_;
 
         # if we're not set yet...
-        $self->clear_value($instance) if $self->doomsday;
+        $self->clear_value($instance) if $self->doomsday($instance);
         return;
     }
 
+    # FIXME do we need this?
     after get_value => sub {
         my ($self, $instance, $for_trigger) = @_;
 
@@ -180,19 +183,14 @@ testing it yet.
 
 }
 {
-    package MooseX::AutoDestruct::Meta::Instance;
-    use Moose::Role;
-    use namespace::autoclean;
-
-    override is_inlinable => sub { 0 };
-}
-{
     package MooseX::AutoDestruct::Trait::Method::Accessor;
     use Moose::Role;
     use namespace::autoclean;
 
+    our $VERSION = '0.001_01';
+
     # debug!
-    before _eval_closure => sub { print "$_[2]\n" };
+    #before _eval_closure => sub { print "$_[2]\n" };
 
     override _inline_pre_body => sub {
         my ($self, $instance) = @_;
@@ -292,30 +290,9 @@ testing it yet.
             'time() + ' . $attr->ttl,
         );
 
-        ###     time is: time()
-        ### destruct at: time() + $attr->ttl
         return "$code;\n";
     }
 
-}
-
-# I'm pretty sure we're not going to need this
-
-sub init_meta_XXX {
-    my ($class, %options) = @_;
-    my $for_class = $options{for_class};
-
-    Moose::Util::MetaRole::apply_metaroles(
-        for => $for_class,
-        class_metaroles => {
-           class => ['MooseX::AutoDestruct::...'],
-        },
-        role_metaroles => {
-            role => ['MooseX::AutoDestruct::...'],
-        },
-    );
-
-    return $for_class->meta;
 }
 
 =head1 SEE ALSO
