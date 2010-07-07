@@ -24,9 +24,12 @@ author_requires 'File::Find::Rule';
 author_requires 'FindBin';
 author_requires 'Module::ScanDeps';
 
+no_index package => 'Moose::Meta::Attribute::Custom::Trait::AutoDestruct';
+
 extra_tests;
 auto_install;
 auto_provides;
+write_mymeta_json;
 
 WriteAll;
 
