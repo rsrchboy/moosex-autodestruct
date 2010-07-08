@@ -3,32 +3,40 @@ NAME
 
 SYNOPSIS
         package Foo;
+
         use Moose;
         use namespace::autoclean;
         use MooseX::AutoDestruct;
 
-        has destructable => (
+        has foo => (
             traits => ['AutoDestruct'],
-            is => 'ro', isa => 'Str', required => 1,
+            is => 'ro', isa => 'Str', lazy_build => 1,
             ttl => 600, # time, in seconds
         );
 
+        sub _build_foo { --some expensive operation-- }
+
 DESCRIPTION
-    MooseX::AutoDestruct
+    MooseX::AutoDestruct is an attribute metaclass trait that causes your
+    attribute value to be cleared after a certain time from when the value
+    has been set.
+
+    This trait will work regardless of how the value is populated or if a
+    clearer method has been installed; or if the value is accessed via the
+    installed accessors or by accessing the attribute metaclass itself.
 
 TRAITS APPLIED
-IMPLICATIONS FOR ROLES
-    As far as I know, there are none. Things should Just Work.
+    No traits are automatically applied to any metaclasses; however, on
+    use'ing this package an 'AutoDestruct' attribute trait becomes
+    available.
 
-CAVEATS
-    The attribute value is only auto-destructed on an access past the
-    destruct time; e.g. when an accessor, reader, or predicate accessor is
-    called. If you're doing something funky behind the scenes (e.g. directly
-    accessing the attribute in the hashref) things aren't going to work as
-    you expect.
+USAGE
+    Apply the AutoDestruct trait to your attribute metaclass (e.g. "traits
+    => ['AutoDestruct']") and supply a ttl value.
 
-    Using get/set_value() on the attribute directly should work, though
-    we're not testing it yet.
+    Typical usage of this could be for an attribute to store a value that is
+    expensive to calculate, and can be counted on to be valid for a certain
+    amount of time (e.g. caching). Builders are your friends :)
 
 SEE ALSO
     Class::MOP, Moose.
