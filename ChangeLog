@@ -1,5 +1,9 @@
 Changes for MooseX::AutoDestruct
 
+0.001_03 - Thu Jul  8 2010
+	* Remove an errant requires
+	* Doc improvements
+
 0.001_02 - Tue Jul  6 2010
 	* Additional tests exercising the attribute from the meta side of things
 	* Correct how enforce_doomsday() was calling doomsday() (namely, now it
