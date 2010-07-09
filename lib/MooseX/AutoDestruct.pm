@@ -63,7 +63,6 @@ of time (e.g. caching).  Builders are your friends :)
 {
     package MooseX::AutoDestruct::Trait::Attribute;
     use Moose::Role;
-    use common::sense;
     use namespace::autoclean;
 
     our $VERSION = '0.001_02';
