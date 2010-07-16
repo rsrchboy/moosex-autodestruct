@@ -12,3 +12,4 @@ cover_db
 \..*\.swp
 \.git
 \.bak$
+MYMETA\..*
