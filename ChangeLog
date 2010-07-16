@@ -1,5 +1,10 @@
 Changes for MooseX::AutoDestruct
 
+0.002 - Fri Jul 16 2010
+	* add very basic (and redundant) builder tests
+	* make the test suite a touch quieter
+	* first non-developer release!
+
 0.001_03 - Thu Jul  8 2010
 	* Remove an errant requires
 	* Doc improvements
