@@ -8,7 +8,7 @@ use namespace::autoclean;
 # debugging
 #use Smart::Comments '###', '####';
 
-our $VERSION = '0.001_03';
+our $VERSION = '0.002';
 
 =head1 NAME
 
@@ -65,7 +65,7 @@ of time (e.g. caching).  Builders are your friends :)
     use Moose::Role;
     use namespace::autoclean;
 
-    our $VERSION = '0.001_03';
+    our $VERSION = '0.002';
 
     has ttl => (is => 'ro', isa => 'Int', required => 1, predicate => 'has_ttl');
 
@@ -193,7 +193,7 @@ of time (e.g. caching).  Builders are your friends :)
     use Moose::Role;
     use namespace::autoclean;
 
-    our $VERSION = '0.001_03';
+    our $VERSION = '0.002';
 
     # debug!
     #before _eval_closure => sub { print "$_[2]\n" };
