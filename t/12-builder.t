@@ -5,6 +5,9 @@
 This test exercises some basic attribute functionality, to make sure things
 are working "as advertized" with the AutoDestruct trait.
 
+This is probably redundant against the main Moose test suite, but it doesn't
+hurt to check it a little bit here as well.
+
 =cut
 
 use strict;
