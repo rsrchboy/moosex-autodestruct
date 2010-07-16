@@ -40,7 +40,6 @@ has_attribute_ok $tc, 'two';
 
 my $two = $tc->meta->get_attribute('two');
 
-diag '$two isa ' . ref $two;
 isa_ok $two => 'Moose::Meta::Attribute', 'two isan attribute metaclass';
 
 # some basic attribute tests
@@ -55,7 +54,6 @@ is $two->get_value($tc), 'w00t', 'two set correctly';
 diag 'sleeping';
 sleep 8;
 ok !$two->has_value($tc), 'no value for two (autodestruct)';
-diag $tc->two;
 
 
 done_testing;

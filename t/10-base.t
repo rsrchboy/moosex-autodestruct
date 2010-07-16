@@ -43,7 +43,6 @@ is $tc->two, 'w00t', 'two value set correctly';
 diag 'sleeping';
 sleep 8;
 ok !$tc->has_two, 'no value for two (autodestruct)';
-diag $tc->two;
 
 
 done_testing;
