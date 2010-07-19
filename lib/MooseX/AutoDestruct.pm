@@ -251,7 +251,7 @@ of time (e.g. caching).  Builders are your friends :)
         my $mi        = $attr->associated_class->instance_metaclass;
 
         my $deinit;
-        $deinit .= $mi->inline_deinitialize_slot('$_[0]', $_)
+        $deinit .= $mi->inline_deinitialize_slot('$_[0]', $_) . ';'
             for $attr->slots;
 
         my ( $code, $e ) = $self->_eval_closure(

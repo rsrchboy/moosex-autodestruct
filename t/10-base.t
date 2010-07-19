@@ -23,7 +23,7 @@ use Test::Moose;
     has two => (
         traits => ['AutoDestruct'],
         #is => 'rw', lazy_build => 1, ttl => 10,
-        is => 'rw', predicate => 'has_two', ttl => 5,
+        is => 'rw', predicate => 'has_two', ttl => 5, clearer => 'clear_two',
     );
 }
 
@@ -44,6 +44,12 @@ diag 'sleeping';
 sleep 8;
 ok !$tc->has_two, 'no value for two (autodestruct)';
 
+# check our generated clearer
+$tc->two('w00t');
+ok $tc->has_two, 'two has value';
+is $tc->two, 'w00t', 'two value set correctly';
+$tc->clear_two;
+ok !$tc->has_two, 'no value for two (clearer method)';
 
 done_testing;
 
