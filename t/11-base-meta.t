@@ -13,6 +13,9 @@ metaclass, bypassing any installed accessors.
 use strict;
 use warnings;
 
+# FIXME
+use Test::More skip_all => 'Meta attribute tests incomplete';
+
 use Test::More;
 use Test::Moose;
 
@@ -55,6 +58,7 @@ diag 'sleeping';
 sleep 8;
 ok !$two->has_value($tc), 'no value for two (autodestruct)';
 
+# check our clearer
 
 done_testing;
 
