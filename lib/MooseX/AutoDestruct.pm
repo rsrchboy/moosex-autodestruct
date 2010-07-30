@@ -217,8 +217,23 @@ of time (e.g. caching).  Builders are your friends :)
             . ") {\n"
             ;
 
-        $code .= '    ' .$mi->inline_deinitialize_slot('$_[0]', $_) . ";\n"
-            for $attr->slots;
+        if ($attr->has_clearer) {
+
+            # if we have a clearer method, we should call that -- it may have
+            # been wrapped in the class
+
+            my $clearer = $attr->clearer;
+            ($clearer) = keys %$clearer if ref $clearer;
+
+            $code .= '$_[0]->' . $clearer . '()';
+
+        }
+        else {
+
+            # otherwise, just deinit all the slots we use
+            $code .= '    ' .$mi->inline_deinitialize_slot('$_[0]', $_) . ";\n"
+                for $attr->slots;
+        }
 
         $code .= "}\n";
 
