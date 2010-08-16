@@ -1,5 +1,10 @@
 Changes for MooseX::AutoDestruct
 
+0.004 - Sun Aug 15 2010
+	* AutoDestruct now uses the generated clearer method, if we have one,
+	  rather than clearing inline.  (This should allow clearer wrappers to
+	  work as expected.)
+
 0.003 - Mon Jul 19 2010
 	* Fix inline clearing code; add tests
 	* Skip meta tests at the moment (not written/ready)
