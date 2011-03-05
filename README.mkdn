@@ -55,7 +55,7 @@ Chris Weyl, `<cweyl at alumni.drew.edu>`
 Please report any bugs or feature requests to
 `bug-moosex-autodestruct at rt.cpan.org`, or through
 the web interface at
-<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MooseX-AutoDestruct>.
+[http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MooseX-AutoDestruct](http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MooseX-AutoDestruct).
 
 # TODO
 
@@ -73,19 +73,19 @@ You can also look for information at:
 
 - * RT: CPAN's request tracker
 
-<http://rt.cpan.org/NoAuth/Bugs.html?Dist=MooseX-AutoDestruct>
+[http://rt.cpan.org/NoAuth/Bugs.html?Dist=MooseX-AutoDestruct](http://rt.cpan.org/NoAuth/Bugs.html?Dist=MooseX-AutoDestruct)
 
 - * AnnoCPAN: Annotated CPAN documentation
 
-<http://annocpan.org/dist/MooseX-AutoDestruct>
+[http://annocpan.org/dist/MooseX-AutoDestruct](http://annocpan.org/dist/MooseX-AutoDestruct)
 
 - * CPAN Ratings
 
-<http://cpanratings.perl.org/d/MooseX-AutoDestruct>
+[http://cpanratings.perl.org/d/MooseX-AutoDestruct](http://cpanratings.perl.org/d/MooseX-AutoDestruct)
 
 - * Search CPAN
 
-<http://search.cpan.org/dist/MooseX-AutoDestruct/>
+[http://search.cpan.org/dist/MooseX-AutoDestruct/](http://search.cpan.org/dist/MooseX-AutoDestruct/)
 
 
 

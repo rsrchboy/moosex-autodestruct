@@ -6,4 +6,5 @@ BEGIN {
     use_ok( 'MooseX::AutoDestruct' );
 }
 
-diag( "Testing MooseX::AutoDestruct $MooseX::AutoDestruct::VERSION, Perl $], $^X" );
+diag("Testing MooseX::AutoDestruct $MooseX::AutoDestruct::VERSION, Perl $], $^X");
+diag('Moose version: ' . Moose->VERSION);
