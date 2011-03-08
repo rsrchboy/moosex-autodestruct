@@ -59,6 +59,8 @@ of time (e.g. caching).  Builders are your friends :)
 {
     package Moose::Meta::Attribute::Custom::Trait::AutoDestruct;
 
+    our $VERSION = '0.005';
+
     require Moose;
 
     my $moose_version = Moose->VERSION;
@@ -80,11 +82,13 @@ of time (e.g. caching).  Builders are your friends :)
     package MooseX::AutoDestruct::Trait::Attribute;
     use Moose::Role;
     use namespace::autoclean;
+    our $VERSION = '0.005';
 }
 {
     package MooseX::AutoDestruct::Trait::Method::Accessor;
     use Moose::Role;
     use namespace::autoclean;
+    our $VERSION = '0.005';
 }
 {
     package MooseX::AutoDestruct::V2Traits::Attribute;
