@@ -8,7 +8,7 @@ use namespace::autoclean;
 # debugging
 #use Smart::Comments '###', '####';
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 =head1 NAME
 
@@ -27,7 +27,7 @@ with Moose v1.  Nothing to see here, no user-serviceable parts inside.
     use namespace::autoclean;
     with 'MooseX::AutoDestruct::Trait::Attribute';
 
-    our $VERSION = '0.005';
+    our $VERSION = '0.006';
 
     has ttl => (is => 'ro', isa => 'Int', required => 1, predicate => 'has_ttl');
 
@@ -155,7 +155,7 @@ with Moose v1.  Nothing to see here, no user-serviceable parts inside.
     use namespace::autoclean;
     with 'MooseX::AutoDestruct::Trait::Method::Accessor';
 
-    our $VERSION = '0.005';
+    our $VERSION = '0.006';
 
     # debug!
     #before _eval_closure => sub { print "$_[2]\n" };
