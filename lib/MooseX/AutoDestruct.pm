@@ -8,7 +8,7 @@ use namespace::autoclean;
 # debugging
 #use Smart::Comments '###', '####';
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 =head1 NAME
 
@@ -92,7 +92,7 @@ of time (e.g. caching).  Builders are your friends :)
     use namespace::autoclean;
     with 'MooseX::AutoDestruct::Trait::Attribute';
 
-    our $VERSION = '0.004';
+    our $VERSION = '0.005';
 
     has ttl => (is => 'ro', isa => 'Int', required => 1, predicate => 'has_ttl');
 
@@ -287,7 +287,7 @@ of time (e.g. caching).  Builders are your friends :)
     use namespace::autoclean;
     with 'MooseX::AutoDestruct::Trait::Method::Accessor';
 
-    our $VERSION = '0.004';
+    our $VERSION = '0.005';
 }
 
 =head1 SEE ALSO
