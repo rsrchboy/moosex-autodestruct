@@ -338,10 +338,9 @@ L<http://search.cpan.org/dist/MooseX-AutoDestruct/>
 
 =back
 
-
 =head1 COPYRIGHT & LICENSE
 
-Copyright (c) 2010, Chris Weyl C<< <cweyl@alumni.drew.edu> >>.
+Copyright (c) 2011, Chris Weyl C<< <cweyl@alumni.drew.edu> >>.
 
 This library is free software; you can redistribute it and/or modify it under
 the terms of the GNU Lesser General Public License as published by the Free
