@@ -61,20 +61,19 @@ of time (e.g. caching).  Builders are your friends :)
 
     require Moose;
 
-    #my $moose_version = Moose::Meta::Class->version();
     my $moose_version = Moose->VERSION;
     my $implementation
         = $moose_version < 1.99
         ? 'MooseX::AutoDestruct::V1Traits::Attribute'
         : 'MooseX::AutoDestruct::V2Traits::Attribute'
         ;
+    require MooseX::AutoDestruct::V1Traits if $moose_version < 1.99;
 
     ($moose_version > 2.99) && warn
         "This is Moose $moose_version, but I only know how to deal with 2.x at most!\n",
         "We're going to try using the v2 AutoDestruct traits, but YMMV.\n",
         ;
 
-    #sub register_implementation { 'MooseX::AutoDestruct::Trait::Attribute' }
     sub register_implementation { $implementation }
 }
 {
@@ -258,16 +257,11 @@ of time (e.g. caching).  Builders are your friends :)
 
     my $destruct_wrapper = sub {
         my $self = shift;
-        return ($self->_inline_destruct(@_) , super);
+        return ($self->_inline_destruct(@_), super);
     };
 
     override _inline_has_value => $destruct_wrapper;
     override _inline_get_value => $destruct_wrapper;
-
-    #override _inline_has_value => sub {
-    #    my $self = shift;
-    #    return $self->_inline_destruct(@_) . super ;
-    #};
 
     sub _inline_set_doomsday {
         my ($self, $instance) = @_;
@@ -291,20 +285,9 @@ of time (e.g. caching).  Builders are your friends :)
     package MooseX::AutoDestruct::V2Traits::Method::Accessor;
     use Moose::Role;
     use namespace::autoclean;
+    with 'MooseX::AutoDestruct::Trait::Method::Accessor';
 
     our $VERSION = '0.004';
-
-    # debug!
-    #before _eval_closure => sub { print "$_[2]\n" };
-
-    # M _inline_get_value
-    # M _inline_has_value
-    # C _inline_instance_clear
-
-    # we need to override/wrap _inline_store() so we can deal with there being
-    # two valid slots here that mean two different things: the value and when
-    # it autodestructs.
-
 }
 
 =head1 SEE ALSO

@@ -1,4 +1,4 @@
-package MooseX::AutoDestruct;
+package MooseX::AutoDestruct::V1Traits;
 
 use warnings;
 use strict;
@@ -57,13 +57,10 @@ of time (e.g. caching).  Builders are your friends :)
 =cut
 
 {
-    package Moose::Meta::Attribute::Custom::Trait::AutoDestruct;
-    sub register_implementation {'MooseX::AutoDestruct::Trait::Attribute'}
-}
-{
-    package MooseX::AutoDestruct::Trait::Attribute;
+    package MooseX::AutoDestruct::V1Traits::Attribute;
     use Moose::Role;
     use namespace::autoclean;
+    with 'MooseX::AutoDestruct::Trait::Attribute';
 
     our $VERSION = '0.004';
 
@@ -84,7 +81,7 @@ of time (e.g. caching).  Builders are your friends :)
         ### superclasses: $base_class->meta->name
         my $new_class_meta = Moose::Meta::Class->create_anon_class(
             superclasses => [ $base_class->meta->name ],
-            roles => [ 'MooseX::AutoDestruct::Trait::Method::Accessor' ],
+            roles => [ 'MooseX::AutoDestruct::V1Traits::Method::Accessor' ],
             cache => 1,
         );
 
@@ -188,9 +185,10 @@ of time (e.g. caching).  Builders are your friends :)
 
 }
 {
-    package MooseX::AutoDestruct::Trait::Method::Accessor;
+    package MooseX::AutoDestruct::V1Traits::Method::Accessor;
     use Moose::Role;
     use namespace::autoclean;
+    with 'MooseX::AutoDestruct::Trait::Method::Accessor';
 
     our $VERSION = '0.004';
 
