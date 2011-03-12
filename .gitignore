@@ -14,3 +14,4 @@ inc
 META.yml
 *.bak
 MYMETA.*
+.build

@@ -1,8 +1,12 @@
-# NAME
+=head1 NAME
 
 MooseX::AutoDestruct - Clear your attributes after a certain time
 
-# SYNOPSIS
+=head1 VERSION
+
+version 0.007
+
+=head1 SYNOPSIS
 
     package Foo;
 
@@ -18,7 +22,7 @@ MooseX::AutoDestruct - Clear your attributes after a certain time
 
     sub _build_foo { --some expensive operation-- }
 
-# DESCRIPTION
+=head1 DESCRIPTION
 
 MooseX::AutoDestruct is an attribute metaclass trait that causes your
 attribute value to be cleared after a certain time from when the value has
@@ -28,12 +32,12 @@ This trait will work regardless of how the value is populated or if a clearer
 method has been installed; or if the value is accessed via the installed
 accessors or by accessing the attribute metaclass itself.
 
-# TRAITS APPLIED
+=head1 TRAITS APPLIED
 
 No traits are automatically applied to any metaclasses; however, on use'ing
 this package an 'AutoDestruct' attribute trait becomes available.
 
-# USAGE
+=head1 USAGE
 
 Apply the AutoDestruct trait to your attribute metaclass (e.g. "traits =>
 ['AutoDestruct']") and supply a ttl value.
@@ -42,54 +46,57 @@ Typical usage of this could be for an attribute to store a value that is
 expensive to calculate, and can be counted on to be valid for a certain amount
 of time (e.g. caching).  Builders are your friends :)
 
-# SEE ALSO
+=head1 SEE ALSO
 
-[Class::MOP](http://search.cpan.org/perldoc?Class::MOP), [Moose](http://search.cpan.org/perldoc?Moose).
+L<Class::MOP>, L<Moose>.
 
-# AUTHOR
+=head1 AUTHOR
 
-Chris Weyl, `<cweyl at alumni.drew.edu>`
+Chris Weyl, C<< <cweyl at alumni.drew.edu> >>
 
-# BUGS
+=head1 BUGS
 
 Please report any bugs or feature requests to
-`bug-moosex-autodestruct at rt.cpan.org`, or through
+C<bug-moosex-autodestruct at rt.cpan.org>, or through
 the web interface at
-[http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MooseX-AutoDestruct](http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MooseX-AutoDestruct).
+L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MooseX-AutoDestruct>.
 
-# TODO
+=head1 TODO
 
 Additional testing is required!
 
-# SUPPORT
+=head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc MooseX::AutoDestruct
 
 
-
 You can also look for information at:
 
-- * RT: CPAN's request tracker
+=over 4
 
-[http://rt.cpan.org/NoAuth/Bugs.html?Dist=MooseX-AutoDestruct](http://rt.cpan.org/NoAuth/Bugs.html?Dist=MooseX-AutoDestruct)
+=item * RT: CPAN's request tracker
 
-- * AnnoCPAN: Annotated CPAN documentation
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=MooseX-AutoDestruct>
 
-[http://annocpan.org/dist/MooseX-AutoDestruct](http://annocpan.org/dist/MooseX-AutoDestruct)
+=item * AnnoCPAN: Annotated CPAN documentation
 
-- * CPAN Ratings
+L<http://annocpan.org/dist/MooseX-AutoDestruct>
 
-[http://cpanratings.perl.org/d/MooseX-AutoDestruct](http://cpanratings.perl.org/d/MooseX-AutoDestruct)
+=item * CPAN Ratings
 
-- * Search CPAN
+L<http://cpanratings.perl.org/d/MooseX-AutoDestruct>
 
-[http://search.cpan.org/dist/MooseX-AutoDestruct/](http://search.cpan.org/dist/MooseX-AutoDestruct/)
+=item * Search CPAN
 
-# COPYRIGHT & LICENSE
+L<http://search.cpan.org/dist/MooseX-AutoDestruct/>
 
-Copyright (c) 2011, Chris Weyl `<cweyl@alumni.drew.edu>`.
+=back
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright (c) 2011, Chris Weyl C<< <cweyl@alumni.drew.edu> >>.
 
 This library is free software; you can redistribute it and/or modify it under
 the terms of the GNU Lesser General Public License as published by the Free
@@ -108,3 +115,4 @@ along with this library; if not, write to the
     Free Software Foundation, Inc.,
     59 Temple Place, Suite 330,
     Boston, MA  02111-1307 USA
+

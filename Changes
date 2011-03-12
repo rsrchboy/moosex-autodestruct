@@ -1,5 +1,17 @@
 Changes for MooseX::AutoDestruct
 
+{{$NEXT}}
+    * Switch over to Dist::Zilla
+
+0.006 - Mon  7 Mar 2011
+    * Make sure all our packages have a $VERSION -- not having this was
+      causing problems with the CPAN indexer.
+
+0.005 - Mon  7 Mar 2011
+    * We now suppport Moose v2 (whenever it comes out :))  The traits were
+      refactored into versioned traits, and the register_implementation()
+      function was made smarter to deal with this as well.
+
 0.004 - Sun Aug 15 2010
 	* AutoDestruct now uses the generated clearer method, if we have one,
 	  rather than clearing inline.  (This should allow clearer wrappers to
