@@ -10,6 +10,10 @@ use namespace::autoclean;
 
 our $VERSION = '0.006';
 
+# make sure MooseX::AutoDestruct is loaded for the traits it contains,
+# otherwise our test blow up rather nastily
+Class::MOP::load_class('MooseX::AutoDestruct');
+
 =head1 NAME
 
 MooseX::AutoDestruct::V1Traits - Moose 1.x autodestruct traits
