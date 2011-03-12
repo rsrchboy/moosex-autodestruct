@@ -1,5 +1,7 @@
 package MooseX::AutoDestruct;
 
+# ABSTRACT: Clear your attributes after a certain time
+
 use warnings;
 use strict;
 
@@ -7,10 +9,6 @@ use namespace::autoclean;
 
 # debugging
 #use Smart::Comments '###', '####';
-
-=head1 NAME
-
-MooseX::AutoDestruct - Clear your attributes after a certain time
 
 =head1 SYNOPSIS
 
@@ -334,28 +332,6 @@ L<http://cpanratings.perl.org/d/MooseX-AutoDestruct>
 L<http://search.cpan.org/dist/MooseX-AutoDestruct/>
 
 =back
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright (c) 2011, Chris Weyl C<< <cweyl@alumni.drew.edu> >>.
-
-This library is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the Free
-Software Foundation; either version 2.1 of the License, or (at your option)
-any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-OR A PARTICULAR PURPOSE.
-
-See the GNU Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public License
-along with this library; if not, write to the
-
-    Free Software Foundation, Inc.,
-    59 Temple Place, Suite 330,
-    Boston, MA  02111-1307 USA
 
 =cut
 

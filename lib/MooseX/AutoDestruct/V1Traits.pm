@@ -1,5 +1,7 @@
 package MooseX::AutoDestruct::V1Traits;
 
+# ABSTRACT: Moose 1.x autodestruct traits
+
 use warnings;
 use strict;
 
@@ -11,10 +13,6 @@ use namespace::autoclean;
 # make sure MooseX::AutoDestruct is loaded for the traits it contains,
 # otherwise our test blow up rather nastily
 Class::MOP::load_class('MooseX::AutoDestruct');
-
-=head1 NAME
-
-MooseX::AutoDestruct::V1Traits - Moose 1.x autodestruct traits
 
 =head1 DESCRIPTION
 
@@ -283,28 +281,6 @@ L<MooseX:AutoDestruct>, L<Moose>.
 =head1 AUTHOR
 
 Chris Weyl, C<< <cweyl at alumni.drew.edu> >>
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright (c) 2011, Chris Weyl C<< <cweyl@alumni.drew.edu> >>.
-
-This library is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the Free
-Software Foundation; either version 2.1 of the License, or (at your option)
-any later version.
-
-This library is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-OR A PARTICULAR PURPOSE.
-
-See the GNU Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public License
-along with this library; if not, write to the
-
-    Free Software Foundation, Inc.,
-    59 Temple Place, Suite 330,
-    Boston, MA  02111-1307 USA
 
 =cut
 
