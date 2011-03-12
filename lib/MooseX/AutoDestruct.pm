@@ -8,8 +8,6 @@ use namespace::autoclean;
 # debugging
 #use Smart::Comments '###', '####';
 
-our $VERSION = '0.006';
-
 =head1 NAME
 
 MooseX::AutoDestruct - Clear your attributes after a certain time
@@ -59,7 +57,6 @@ of time (e.g. caching).  Builders are your friends :)
 {
     package Moose::Meta::Attribute::Custom::Trait::AutoDestruct;
 
-    our $VERSION = '0.006';
 
     require Moose;
 
@@ -82,13 +79,11 @@ of time (e.g. caching).  Builders are your friends :)
     package MooseX::AutoDestruct::Trait::Attribute;
     use Moose::Role;
     use namespace::autoclean;
-    our $VERSION = '0.006';
 }
 {
     package MooseX::AutoDestruct::Trait::Method::Accessor;
     use Moose::Role;
     use namespace::autoclean;
-    our $VERSION = '0.006';
 }
 {
     package MooseX::AutoDestruct::V2Traits::Attribute;
@@ -96,7 +91,6 @@ of time (e.g. caching).  Builders are your friends :)
     use namespace::autoclean;
     with 'MooseX::AutoDestruct::Trait::Attribute';
 
-    our $VERSION = '0.006';
 
     has ttl => (is => 'ro', isa => 'Int', required => 1, predicate => 'has_ttl');
 
@@ -291,7 +285,6 @@ of time (e.g. caching).  Builders are your friends :)
     use namespace::autoclean;
     with 'MooseX::AutoDestruct::Trait::Method::Accessor';
 
-    our $VERSION = '0.006';
 }
 
 =head1 SEE ALSO

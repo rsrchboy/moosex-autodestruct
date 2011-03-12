@@ -8,8 +8,6 @@ use namespace::autoclean;
 # debugging
 #use Smart::Comments '###', '####';
 
-our $VERSION = '0.006';
-
 # make sure MooseX::AutoDestruct is loaded for the traits it contains,
 # otherwise our test blow up rather nastily
 Class::MOP::load_class('MooseX::AutoDestruct');
@@ -30,8 +28,6 @@ with Moose v1.  Nothing to see here, no user-serviceable parts inside.
     use Moose::Role;
     use namespace::autoclean;
     with 'MooseX::AutoDestruct::Trait::Attribute';
-
-    our $VERSION = '0.006';
 
     has ttl => (is => 'ro', isa => 'Int', required => 1, predicate => 'has_ttl');
 
@@ -158,8 +154,6 @@ with Moose v1.  Nothing to see here, no user-serviceable parts inside.
     use Moose::Role;
     use namespace::autoclean;
     with 'MooseX::AutoDestruct::Trait::Method::Accessor';
-
-    our $VERSION = '0.006';
 
     # debug!
     #before _eval_closure => sub { print "$_[2]\n" };
