@@ -2,6 +2,8 @@ Changes for MooseX::AutoDestruct
 
 {{$NEXT}}
     * Switch over to Dist::Zilla
+    * Ensure V1Traits has the main module loaded so the inline packages
+      are present
 
 0.006 - Mon  7 Mar 2011
     * Make sure all our packages have a $VERSION -- not having this was
