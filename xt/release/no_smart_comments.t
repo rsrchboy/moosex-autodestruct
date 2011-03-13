@@ -22,7 +22,7 @@ use Test::More;
 my @files = File::Find::Rule
     ->file
     ->name('*.pm')
-    ->in("$FindBin::Bin/../../lib")
+    ->in("$FindBin::Bin/../lib")
     ;
 
 plan tests => scalar @files;
