@@ -1,6 +1,10 @@
 Changes for MooseX::AutoDestruct
 
 {{$NEXT}}
+    * Switch no smart-comments tests to
+      Dist::Zilla::Plugin::NoSmartCommentsTests
+
+0.007     2011-03-12 20:47:06 America/Los_Angeles
     * Switch over to Dist::Zilla
     * Ensure V1Traits has the main module loaded so the inline packages
       are present
