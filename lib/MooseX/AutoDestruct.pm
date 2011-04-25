@@ -300,39 +300,6 @@ C<bug-moosex-autodestruct at rt.cpan.org>, or through
 the web interface at
 L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=MooseX-AutoDestruct>.
 
-=head1 TODO
-
-Additional testing is required!
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc MooseX::AutoDestruct
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=MooseX-AutoDestruct>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/MooseX-AutoDestruct>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/MooseX-AutoDestruct>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/MooseX-AutoDestruct/>
-
-=back
-
 =cut
 
 1; # End of MooseX::AutoDestruct
