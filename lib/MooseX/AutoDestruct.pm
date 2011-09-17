@@ -125,7 +125,6 @@ of time (e.g. caching).  Builders are your friends :)
     around slots => sub {
         my ($orig, $self) = (shift, shift);
 
-        my $base = $self->$orig();
         return ($self->$orig(), $self->destruct_at_slot);
     };
 
