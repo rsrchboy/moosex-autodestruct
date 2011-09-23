@@ -228,7 +228,7 @@ of time (e.g. caching).  Builders are your friends :)
         my $destruct_at_slot_value = $self
             ->associated_class
             ->get_meta_instance
-            ->inline_get_slot_value('$_[0]', $self->destruct_at_slot)
+            ->inline_get_slot_value($instance, $self->destruct_at_slot)
             ;
 
         my $clear_attribute;
@@ -240,7 +240,7 @@ of time (e.g. caching).  Builders are your friends :)
             my $clearer = $self->clearer;
             ($clearer) = keys %$clearer if ref $clearer;
 
-            $clear_attribute = '$_[0]->' . $clearer . '()';
+            $clear_attribute = "${instance}->" . $clearer . '()';
         }
         else {
             # otherwise, just deinit all the slots we use
