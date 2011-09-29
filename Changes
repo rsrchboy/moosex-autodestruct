@@ -1,8 +1,13 @@
 Changes for MooseX::AutoDestruct
 
 {{$NEXT}}
-    * Switch no smart-comments tests to
-      Dist::Zilla::Plugin::NoSmartCommentsTests
+
+0.008     2011-09-28 18:37:39 America/Los_Angeles
+	* We were using a hardcoded '$_[0]' at some points in our inline code
+	  generator, when we shouldn't have.  Fixed.
+	* The test suite now runs all tests against mutable test classes, then
+  	  again against immutable test classes.
+    * Switch no smart-comments tests to DZ::Plugin::NoSmartCommentsTests
 
 0.007     2011-03-12 20:47:06 America/Los_Angeles
     * Switch over to Dist::Zilla
