@@ -32,23 +32,27 @@ use Test::Moose;
     sub _build_two { 'foo' }
 }
 
-my $tc = TestClass->new;
+with_immutable {
 
-isa_ok $tc, 'TestClass';
-meta_ok $tc;
+    my $tc = TestClass->new;
 
-has_attribute_ok $tc, 'one';
-has_attribute_ok $tc, 'two';
+    isa_ok $tc, 'TestClass';
+    meta_ok $tc;
 
-# basic autodestruct checking
-for my $i (1..2) {
+    has_attribute_ok $tc, 'one';
+    has_attribute_ok $tc, 'two';
 
-    ok !$tc->has_two, 'no value for two yet';
-    is $tc->two, 'foo', 'two value set correctly';
-    ok $tc->has_two, 'two has value';
-    diag 'sleeping';
-    sleep 8;
-    ok !$tc->has_two, 'no value for two (autodestruct)';
-}
+    # basic autodestruct checking
+    for my $i (1..2) {
+
+        ok !$tc->has_two, 'no value for two yet';
+        is $tc->two, 'foo', 'two value set correctly';
+        ok $tc->has_two, 'two has value';
+        diag 'sleeping';
+        sleep 8;
+        ok !$tc->has_two, 'no value for two (autodestruct)';
+    }
+
+} 'TestClass';
 
 done_testing;

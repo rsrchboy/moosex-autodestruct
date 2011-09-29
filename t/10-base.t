@@ -26,28 +26,32 @@ use Test::Moose;
     );
 }
 
-my $tc = TestClass->new;
+with_immutable {
 
-isa_ok $tc, 'TestClass';
-meta_ok $tc;
+    my $tc = TestClass->new;
 
-has_attribute_ok $tc, 'one';
-has_attribute_ok $tc, 'two';
+    isa_ok $tc, 'TestClass';
+    meta_ok $tc;
 
-# basic autodestruct checking
-ok !$tc->has_two, 'no value for two yet';
-$tc->two('w00t');
-ok $tc->has_two, 'two has value';
-is $tc->two, 'w00t', 'two value set correctly';
-diag 'sleeping';
-sleep 8;
-ok !$tc->has_two, 'no value for two (autodestruct)';
+    has_attribute_ok $tc, 'one';
+    has_attribute_ok $tc, 'two';
 
-# check our generated clearer
-$tc->two('w00t');
-ok $tc->has_two, 'two has value';
-is $tc->two, 'w00t', 'two value set correctly';
-$tc->clear_two;
-ok !$tc->has_two, 'no value for two (clearer method)';
+    # basic autodestruct checking
+    ok !$tc->has_two, 'no value for two yet';
+    $tc->two('w00t');
+    ok $tc->has_two, 'two has value';
+    is $tc->two, 'w00t', 'two value set correctly';
+    diag 'sleeping';
+    sleep 8;
+    ok !$tc->has_two, 'no value for two (autodestruct)';
+
+    # check our generated clearer
+    $tc->two('w00t');
+    ok $tc->has_two, 'two has value';
+    is $tc->two, 'w00t', 'two value set correctly';
+    $tc->clear_two;
+    ok !$tc->has_two, 'no value for two (clearer method)';
+
+} 'TestClass';
 
 done_testing;

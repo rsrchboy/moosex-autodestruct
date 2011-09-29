@@ -33,31 +33,35 @@ use Test::Moose;
 
 }
 
-my $tc = TestClass->new;
+with_immutable {
 
-isa_ok $tc, 'TestClass';
-meta_ok $tc;
+    my $tc = TestClass->new;
 
-has_attribute_ok $tc, 'one';
-has_attribute_ok $tc, 'two';
+    isa_ok $tc, 'TestClass';
+    meta_ok $tc;
 
-my $two = $tc->meta->get_attribute('two');
+    has_attribute_ok $tc, 'one';
+    has_attribute_ok $tc, 'two';
 
-isa_ok $two => 'Moose::Meta::Attribute', 'two isan attribute metaclass';
+    my $two = $tc->meta->get_attribute('two');
 
-# some basic attribute tests
-has_attribute_ok $two, 'ttl';
-ok $two->has_ttl, 'two has a ttl';
-is $two->ttl => 5, 'ttl value is correct';
+    isa_ok $two => 'Moose::Meta::Attribute', 'two isan attribute metaclass';
 
-# check with our instance
-ok !$two->has_value($tc), 'two has no value yet';
-$two->set_value($tc => 'w00t');
-is $two->get_value($tc), 'w00t', 'two set correctly';
-diag 'sleeping';
-sleep 8;
-ok !$two->has_value($tc), 'no value for two (autodestruct)';
+    # some basic attribute tests
+    has_attribute_ok $two, 'ttl';
+    ok $two->has_ttl, 'two has a ttl';
+    is $two->ttl => 5, 'ttl value is correct';
 
-# check our clearer
+    # check with our instance
+    ok !$two->has_value($tc), 'two has no value yet';
+    $two->set_value($tc => 'w00t');
+    is $two->get_value($tc), 'w00t', 'two set correctly';
+    diag 'sleeping';
+    sleep 8;
+    ok !$two->has_value($tc), 'no value for two (autodestruct)';
+
+    # check our clearer
+
+} 'TestClass';
 
 done_testing;
