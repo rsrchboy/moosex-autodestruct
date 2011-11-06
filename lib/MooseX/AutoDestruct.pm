@@ -7,6 +7,32 @@ use strict;
 
 use namespace::autoclean;
 
+use Moose ();
+use Moose::Exporter;
+
+my $implementation;
+
+{
+    my $moose_version = Moose->VERSION;
+    $implementation
+        = $moose_version < 1.99
+        ? 'MooseX::AutoDestruct::V1Traits::Attribute'
+        : 'MooseX::AutoDestruct::V2Traits::Attribute'
+        ;
+    require MooseX::AutoDestruct::V1Traits if $moose_version < 1.99;
+
+    ($moose_version > 2.99) && warn
+        "This is Moose $moose_version, but I only know how to deal with 2.x at most!\n",
+        "We're going to try using the v2 AutoDestruct traits, but YMMV.\n",
+        ;
+}
+
+Moose::Exporter->setup_import_methods(
+    trait_aliases => [
+        [ $implementation => 'AutoDestruct' ],
+    ],
+);
+
 # debugging
 #use Smart::Comments '###', '####';
 
@@ -54,23 +80,6 @@ of time (e.g. caching).  Builders are your friends :)
 
 {
     package Moose::Meta::Attribute::Custom::Trait::AutoDestruct;
-
-
-    require Moose;
-
-    my $moose_version = Moose->VERSION;
-    my $implementation
-        = $moose_version < 1.99
-        ? 'MooseX::AutoDestruct::V1Traits::Attribute'
-        : 'MooseX::AutoDestruct::V2Traits::Attribute'
-        ;
-    require MooseX::AutoDestruct::V1Traits if $moose_version < 1.99;
-
-    ($moose_version > 2.99) && warn
-        "This is Moose $moose_version, but I only know how to deal with 2.x at most!\n",
-        "We're going to try using the v2 AutoDestruct traits, but YMMV.\n",
-        ;
-
     sub register_implementation { $implementation }
 }
 {
