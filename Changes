@@ -2,6 +2,8 @@ Changes for MooseX::AutoDestruct
 
 {{$NEXT}}
 
+0.009     2011-11-06 19:49:57 America/Los_Angeles
+
 0.008     2011-09-28 18:37:39 America/Los_Angeles
 	* We were using a hardcoded '$_[0]' at some points in our inline code
 	  generator, when we shouldn't have.  Fixed.
