@@ -11,7 +11,7 @@ install:
    - git config user.email 'travis@nowhere.dne'
 
    # echo "# Deal with all of the DZIL dependancies, quickly and quietly"
-   - rm -rf ~/.cpanm ||:
+   - [ -e ~/.cpanm ] && rm -rf ~/.cpanm
    - mkdir ~/.cpanm
    - sudo mount tmpfs -t tmpfs ~/.cpanm
    - cpanm --quiet --notest --skip-satisfied Dist::Zilla
