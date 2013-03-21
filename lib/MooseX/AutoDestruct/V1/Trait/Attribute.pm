@@ -128,7 +128,7 @@ after get_value => sub {
 
 __END__
 
-=for Pod::Coverage
+=for Pod::Coverage avert_doomsday doomsday enforce_doomsday has_doomsday set_doomsday
 
 =head1 DESCRIPTION
 
